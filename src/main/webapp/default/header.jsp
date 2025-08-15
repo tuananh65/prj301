@@ -18,8 +18,8 @@
         </nav>
         <div class="nav-actions">
             <div class="auth-buttons">
-                <button class="login-btn">Đăng nhập</button>
-                <button class="register-btn">Đăng ký</button>
+               <a href="${pageContext.request.contextPath}/default/SignIn.jsp" class="custom-btn btn btn-outline-light me-2">Đăng nhập</a>
+                
             </div>
             <button class="cart-btn">🛒 Giỏ hàng (0)</button>
         </div>
