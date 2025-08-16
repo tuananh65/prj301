@@ -1,0 +1,241 @@
+/* Removed global * selector and made all selectors more specific to avoid affecting header/footer */
+/* Product Edit Form Styles - Only targets form elements */
+.container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+.container h1 {
+  color: #1f2937;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.container h1::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  border-radius: 2px;
+}
+
+/* Form Group Styling */
+.container .form-group {
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+.container .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Input Field Styling */
+.container .form-group input[type="text"],
+.container .form-group input[type="number"],
+.container .form-group select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1f2937;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.container .form-group input[type="text"]:focus,
+.container .form-group input[type="number"]:focus,
+.container .form-group select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.container .form-group input[type="text"]:hover,
+.container .form-group input[type="number"]:hover,
+.container .form-group select:hover {
+  border-color: #9ca3af;
+}
+
+/* Select Dropdown Styling */
+.container .form-group select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* Form Actions Styling */
+.container .form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+/* Button Base Styling */
+.container .btn {
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Primary Button */
+.container .btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.container .btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.container .btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Secondary Button */
+.container .btn-secondary {
+  background: #f8fafc;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+}
+
+.container .btn-secondary:hover {
+  background: #e2e8f0;
+  color: #475569;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.container .btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .container h1 {
+    font-size: 1.75rem;
+  }
+
+  .container .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .container .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+
+  .container h1 {
+    font-size: 1.5rem;
+  }
+
+  .container .form-group input[type="text"],
+  .container .form-group input[type="number"],
+  .container .form-group select {
+    padding: 0.75rem;
+  }
+}
+
+/* Loading State for Form Submission */
+.container .btn-primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Focus Visible for Accessibility */
+.container .btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Smooth Animations */
+.container .form-group {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add subtle animation delays for form groups */
+.container .form-group:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.container .form-group:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.container .form-group:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.container .form-group:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.container .form-group:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.container .form-actions {
+  animation-delay: 0.6s;
+}
