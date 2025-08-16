@@ -8,9 +8,11 @@ import java.time.LocalDateTime;
 @Table(name = "Product")
 public class Product {
 
-    @Id
-    @Column(name = "ProductID", nullable = false)
-    private Integer productId;
+   @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "ProductID", nullable = false)
+private Integer productId;
+
 
     @Column(name = "CategoryName", nullable = false, length = 100)
     private String categoryName;

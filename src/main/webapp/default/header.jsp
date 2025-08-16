@@ -3,7 +3,7 @@
 
 <!-- Header -->
 <header class="header">
-    <div class="container">
+    <div class="header-inner">
         <div class="nav-brand">
             <h1 class="logo">🍽️ QuầyBán</h1>
         </div>
@@ -28,24 +28,26 @@
 <style>
     
 
-/* Header Styles */
-.header {
+/* Header Styles */.header {
   background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   padding: 1rem 0;
   box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%; /* full width */
 }
 
-.header .container {
+.header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1200px; /* căn giữa nội dung */
   margin: 0 auto;
   padding: 0 20px;
 }
+
 
 .logo {
   font-size: 1.8rem;

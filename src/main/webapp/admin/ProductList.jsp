@@ -5,7 +5,7 @@
     <head>
         <title>Danh sách sản phẩm</title>
         <link rel="stylesheet" href="css/productlist.css">
-        
+
     </head>
     <body>
         <%@ include file="/default/header.jsp" %>
@@ -15,10 +15,14 @@
                 <div class="page-header">
                     <h1 class="page-title">Danh sách sản phẩm</h1>
                     <div class="page-actions">
-                        <button class="btn btn-primary">Thêm sản phẩm</button>
-                        <button class="btn btn-secondary">Xuất Excel</button>
+                        <a href="addProduct" class="btn btn-primary">Thêm sản phẩm</a>
+                        <a href="products?action=viewAll" class="btn btn-primary">Xem tất cả</a>
+
                     </div>
+
                 </div>
+
+
 
                 <div class="filters-section">
                     <form method="get" action="products">
@@ -83,15 +87,29 @@
                         </tbody>
 
                     </table>
+                    <c:if test="${not empty noProductsMessage}">
+                        <div class="alert alert-warning">
+                            ${noProductsMessage}
+                        </div>
+                    </c:if>
+
                 </div>
 
                 <div class="pagination">
-                    <button class="page-btn">« Trước</button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <button class="page-btn">Sau »</button>
+                    <c:if test="${currentPage > 1}">
+                        <a href="products?page=${currentPage - 1}&category=${category}&status=${status}&search=${search}" class="page-btn">« Trước</a>
+                    </c:if>
+
+                    <c:forEach var="i" begin="1" end="${totalPages}">
+                        <a href="products?page=${i}&category=${category}&status=${status}&search=${search}" 
+                           class="page-btn ${i == currentPage ? 'active' : ''}">${i}</a>
+                    </c:forEach>
+
+                    <c:if test="${currentPage < totalPages}">
+                        <a href="products?page=${currentPage + 1}&category=${category}&status=${status}&search=${search}" class="page-btn">Sau »</a>
+                    </c:if>
                 </div>
+
             </div>
         </main>
 
