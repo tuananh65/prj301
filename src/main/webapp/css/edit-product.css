@@ -1,241 +1,98 @@
-/* Removed global * selector and made all selectors more specific to avoid affecting header/footer */
-/* Product Edit Form Styles - Only targets form elements */
-.container {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e5e7eb;
-  box-sizing: border-box;
+/* Bọc toàn bộ form để căn giữa */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb; /* màu nền chung */
 }
-
-.container h1 {
-  color: #1f2937;
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  text-align: center;
-  position: relative;
-}
-
-.container h1::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-  border-radius: 2px;
-}
-
-/* Form Group Styling */
-.container .form-group {
-  margin-bottom: 1.5rem;
-  box-sizing: border-box;
-}
-
-.container .form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #374151;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-/* Input Field Styling */
-.container .form-group input[type="text"],
-.container .form-group input[type="number"],
-.container .form-group select {
-  width: 100%;
-  padding: 0.875rem 1rem;
-  border: 2px solid #e5e7eb;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #1f2937;
-  background-color: #ffffff;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-
-.container .form-group input[type="text"]:focus,
-.container .form-group input[type="number"]:focus,
-.container .form-group select:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-  transform: translateY(-1px);
-}
-
-.container .form-group input[type="text"]:hover,
-.container .form-group input[type="number"]:hover,
-.container .form-group select:hover {
-  border-color: #9ca3af;
-}
-
-/* Select Dropdown Styling */
-.container .form-group select {
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.75rem center;
-  background-repeat: no-repeat;
-  background-size: 1.5em 1.5em;
-  padding-right: 2.5rem;
-}
-
-/* Form Actions Styling */
-.container .form-actions {
+.page-content {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #e5e7eb;
-  box-sizing: border-box;
+  justify-content: center;  /* căn giữa ngang */
+  align-items: center;      /* căn giữa dọc (nếu muốn) */
+  padding: 40px 20px;
 }
 
-/* Button Base Styling */
-.container .btn {
-  padding: 0.875rem 2rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 120px;
-  text-align: center;
-  box-sizing: border-box;
+.form-card {
+  width: 100%;
+  max-width: 500px;   /* form gọn trong khung */
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Primary Button */
-.container .btn-primary {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+/* Tiêu đề form */
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #333;
 }
 
-.container .btn-primary:hover {
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+/* Nhóm input */
+.form-group {
+    margin-bottom: 18px;
 }
 
-.container .btn-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #444;
 }
 
-/* Secondary Button */
-.container .btn-secondary {
-  background: #f8fafc;
-  color: #64748b;
-  border: 2px solid #e2e8f0;
-}
-
-.container .btn-secondary:hover {
-  background: #e2e8f0;
-  color: #475569;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.container .btn-secondary:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-
-  .container h1 {
-    font-size: 1.75rem;
-  }
-
-  .container .form-actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .container .btn {
+.form-group input,
+.form-group select {
     width: 100%;
-  }
+    padding: 10px 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
-@media (max-width: 480px) {
-  .container {
-    margin: 0.5rem;
-    padding: 1rem;
-  }
-
-  .container h1 {
-    font-size: 1.5rem;
-  }
-
-  .container .form-group input[type="text"],
-  .container .form-group input[type="number"],
-  .container .form-group select {
-    padding: 0.75rem;
-  }
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 6px rgba(74, 144, 226, 0.3);
+    outline: none;
 }
 
-/* Loading State for Form Submission */
-.container .btn-primary:disabled {
-  background: #9ca3af;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+/* Nút bấm */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
-/* Focus Visible for Accessibility */
-.container .btn:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+.btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
 }
 
-/* Smooth Animations */
-.container .form-group {
-  animation: fadeInUp 0.6s ease-out;
+.btn-primary {
+    background: #4a90e2;
+    color: white;
+    border: none;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.btn-primary:hover {
+    background: #357ab8;
+    transform: scale(1.03);
 }
 
-/* Add subtle animation delays for form groups */
-.container .form-group:nth-child(2) {
-  animation-delay: 0.1s;
+.btn-secondary {
+    background: #e0e0e0;
+    color: #333;
+    border: none;
 }
-.container .form-group:nth-child(3) {
-  animation-delay: 0.2s;
-}
-.container .form-group:nth-child(4) {
-  animation-delay: 0.3s;
-}
-.container .form-group:nth-child(5) {
-  animation-delay: 0.4s;
-}
-.container .form-group:nth-child(6) {
-  animation-delay: 0.5s;
-}
-.container .form-actions {
-  animation-delay: 0.6s;
+
+.btn-secondary:hover {
+    background: #c9c9c9;
+    transform: scale(1.03);
 }

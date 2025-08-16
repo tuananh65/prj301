@@ -85,6 +85,97 @@ public void updateProduct(Product product) {
         em.close();
     }
 }
+public void addProduct(Product product) {
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction tx = em.getTransaction();
+    try {
+        tx.begin();
+        em.persist(product);
+        tx.commit();
+    } catch (Exception e) {
+        if (tx.isActive()) tx.rollback();
+        e.printStackTrace();
+    } finally {
+        em.close();
+    }
+}
+public boolean existsByName(String name) {
+    EntityManager em = emf.createEntityManager();
+    try {
+        Long count = em.createQuery("SELECT COUNT(p) FROM Product p WHERE p.name = :name", Long.class)
+                       .setParameter("name", name)
+                       .getSingleResult();
+        return count > 0;
+    } finally {
+        em.close();
+    }
+}
+public List<Product> getProductsWithPaging(String category, String status, String search, int page, int pageSize) {
+    EntityManager em = emf.createEntityManager();
+    try {
+        String jpql = "SELECT p FROM Product p WHERE 1=1";
+        if (category != null && !category.trim().isEmpty()) {
+            jpql += " AND p.categoryName = :category";
+        }
+        if (status != null && !status.trim().isEmpty()) {
+            jpql += " AND p.status = :status";
+        }
+        if (search != null && !search.trim().isEmpty()) {
+            jpql += " AND LOWER(p.name) LIKE :search";
+        }
+
+        TypedQuery<Product> query = em.createQuery(jpql, Product.class);
+        if (category != null && !category.trim().isEmpty()) {
+            query.setParameter("category", category.trim());
+        }
+        if (status != null && !status.trim().isEmpty()) {
+            query.setParameter("status", status.trim());
+        }
+        if (search != null && !search.trim().isEmpty()) {
+            query.setParameter("search", "%" + search.trim().toLowerCase() + "%");
+        }
+
+        // Phân trang
+        query.setFirstResult((page - 1) * pageSize);
+        query.setMaxResults(pageSize);
+
+        return query.getResultList();
+    } finally {
+        em.close();
+    }
+}
+public long countProducts(String category, String status, String search) {
+    EntityManager em = emf.createEntityManager();
+    try {
+        String jpql = "SELECT COUNT(p) FROM Product p WHERE 1=1";
+        if (category != null && !category.trim().isEmpty()) {
+            jpql += " AND p.categoryName = :category";
+        }
+        if (status != null && !status.trim().isEmpty()) {
+            jpql += " AND p.status = :status";
+        }
+        if (search != null && !search.trim().isEmpty()) {
+            jpql += " AND LOWER(p.name) LIKE :search";
+        }
+
+        TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+        if (category != null && !category.trim().isEmpty()) {
+            query.setParameter("category", category.trim());
+        }
+        if (status != null && !status.trim().isEmpty()) {
+            query.setParameter("status", status.trim());
+        }
+        if (search != null && !search.trim().isEmpty()) {
+            query.setParameter("search", "%" + search.trim().toLowerCase() + "%");
+        }
+
+        return query.getSingleResult();
+    } finally {
+        em.close();
+    }
+}
+
+
 
 
     // Test DAO

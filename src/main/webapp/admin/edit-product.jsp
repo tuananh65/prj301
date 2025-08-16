@@ -1,17 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-    <head>
-        <title>Sửa sản phẩm</title>
-        <link rel="stylesheet" href="css/edit-product.css">
-        <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/footer.css">
-    </head>
-    <body>
-        <%@ include file="/default/header.jsp" %>
+<head>
+    <title>Sửa sản phẩm</title>
+    <link rel="stylesheet" href="css/edit-product.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    
+</head>
+<body>
+    <%@ include file="/default/header.jsp" %>
 
-        <div class="container">
-            <h1>Sửa sản phẩm</h1>
+    <!-- Chỉ bọc form trong container -->
+    <div class="page-content">
+        <div class="form-card">
+            <h1 class="form-title">✏️ Sửa sản phẩm</h1>
             <form method="post" action="${pageContext.request.contextPath}/editProduct">
                 <input type="hidden" name="productId" value="${product.productId}" />
 
@@ -33,8 +36,6 @@
                     <input type="number" step="0.01" name="price" value="${product.price}" required />
                 </div>
 
-
-
                 <div class="form-group">
                     <label>Trạng thái:</label>
                     <select name="status">
@@ -49,12 +50,13 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Lưu</button>
-                    <a href="${pageContext.request.contextPath}/products" class="btn btn-secondary">Hủy</a>
+                    <button type="submit" class="btn btn-primary">💾 Lưu</button>
+                    <a href="${pageContext.request.contextPath}/products" class="btn btn-secondary">❌ Hủy</a>
                 </div>
             </form>
         </div>
+    </div>
 
-        <%@ include file="/default/footer.jsp" %>
-    </body>
+    <%@ include file="/default/footer.jsp" %>
+</body>
 </html>
